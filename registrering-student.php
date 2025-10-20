@@ -19,11 +19,12 @@
 <?php 
   if (isset($_POST ["registrerStudentkodeKnapp"]))
     {
-      $Klassekode=$_POST ["Klassekode"];
+      $fornavn=$_POST ["fornavn"];
       $etternavn=$_POST ["etternavn"];
       $brukernavn=$_POST ["brukernavn"];
+      $klassekode=$_POST ["klassekode"];
 
-      if (!$Klassekode || !$etternavn || !$brukernavn)
+      if (!$Klassekode || !$etternavn || !$brukernavn || $fornavn)
         {
           print ("B&aring;de Klassekode etternavn og brukernavn m&aring; fylles ut");
         }
