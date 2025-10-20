@@ -17,9 +17,9 @@
 <?php
   if (isset($_POST ["slettklasseKnapp"]))
     {	
-      $postnr=$_POST ["klassekode"];
+      $klassenavn=$_POST ["klassekode"];
 	  
-	  if (!$postnr)
+	  if (!$klassenavn)
         {
           print ("klassekode m&aring; fylles ut");
         }
