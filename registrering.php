@@ -41,7 +41,7 @@
           else
             {
               $sqlSetning="INSERT INTO klassenavn VALUES('$Klassekode','$klassenavn', '$studiumkode');";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
+              mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
               print ("F&oslash;lgende klassenavn er n&aring; registrert: $Klassekode $klassenavn $studiumkode"); 
