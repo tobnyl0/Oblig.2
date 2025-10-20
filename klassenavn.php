@@ -2,7 +2,7 @@
 /*
 /*  Programmet skriver ut alle registrerte klasser
 */
-  include("database.php");  /* tilkobling til database-serveren utf�rt og valg av database foretatt */
+  include("db-tilkobling.php");  /* tilkobling til database-serveren utf�rt og valg av database foretatt */
 
   $sqlSetning="SELECT * FROM Klassekode;";
   
