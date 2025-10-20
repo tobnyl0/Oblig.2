@@ -18,7 +18,7 @@
 <?php 
   if (isset($_POST ["registrerKlassekodeKnapp"]))
     {
-      $klassekode=$_POST ["Klassekode"];
+      $Klassekode=$_POST ["Klassekode"];
       $klasse=$_POST ["klasse"];
       $studiumkode=$_POST ["studiumkode"];
 
