@@ -24,7 +24,7 @@
 
       if (!$Klassekode || !$klassenavn || !$studiumkode)
         {
-          print ("B&aring;de Klassekode og klasse m&aring; fylles ut");
+          print ("B&aring;de Klassekode og klassenavn m&aring; fylles ut");
         }
       else
         {
@@ -40,11 +40,11 @@
             }
           else
             {
-              $sqlSetning="INSERT INTO klasse VALUES('$Klassekode','$klassenavn', '$studiumkode');";
+              $sqlSetning="INSERT INTO klassenavn VALUES('$Klassekode','$klassenavn', '$studiumkode');";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende klasse er n&aring; registrert: $Klassekode $klasse"); 
+              print ("F&oslash;lgende klassenavn er n&aring; registrert: $Klassekode $klassenavn"); 
             }
         }
     }
