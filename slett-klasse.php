@@ -10,7 +10,7 @@
 <h3>Slett klasse</h3>
 
 <form method="post" action="" id="slettklasseSkjema" name="slettklasseSkjema" onSubmit="return bekreft()">
-  Postnr <input type="text" id="klassekode" name="klassekode" required /> <br/>
+  klassenavn <input type="text" id="klassekode" name="klassekode" required /> <br/>
   <input type="submit" value="Slett klasse" name="slettklasseKnapp" id="slettklasseKnapp" /> 
 </form>
 
