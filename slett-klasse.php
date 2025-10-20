@@ -10,24 +10,24 @@
 <h3>Slett klasse</h3>
 
 <form method="post" action="" id="slettklasseSkjema" name="slettklasseSkjema" onSubmit="return bekreft()">
-  klassenavn <input type="text" id="klassekode" name="klassekode" required /> <br/>
+  klassenavn <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
   <input type="submit" value="Slett klasse" name="slettklasseKnapp" id="slettklasseKnapp" /> 
 </form>
 
 <?php
   if (isset($_POST ["slettklasseKnapp"]))
     {	
-      $klassenavn=$_POST ["klassekode"];
+      $klassenavn=$_POST ["Klassekode"];
 	  
 	  if (!$klassenavn)
         {
-          print ("klassekode m&aring; fylles ut");
+          print ("Klassekode m&aring; fylles ut");
         }
       else
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM klassenavn WHERE klassekode='$klassekode';";
+          $sqlSetning="SELECT * FROM klassenavn WHERE Klassekode='$Klassekode';";
           $sqlResultat=mysqli_query ($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
@@ -37,11 +37,11 @@
             }
           else
             {	  
-              $sqlSetning="DELETE FROM klassenavn WHERE klassekode='$klassekode';";
+              $sqlSetning="DELETE FROM klassenavn WHERE Klassekode='$Klassekodelassekode';";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
                 /* SQL-setning sendt til database-serveren */
 		
-              print ("F&oslash;lgende poststed er n&aring; slettet: $klassekode  <br />");
+              print ("F&oslash;lgende poststed er n&aring; slettet: $Klassekode  <br />");
             }
         }
     }
