@@ -22,7 +22,7 @@
       $klasse=$_POST ["klasse"];
       $studiekode=$_POST ["studiekode"]
 
-      if (!$klassekode || !$klasse)
+      if (!$klassekode || !$klasse || !$studiekode)
         {
           print ("B&aring;de klassekode og klasse m&aring; fylles ut");
         }
