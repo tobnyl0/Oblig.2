@@ -10,7 +10,7 @@
 <form method="post" action="" id="registrerklasseSkjema" name="registrerklasseSkjema">
   klassekode <input type="text" id="klassekode" name="klassekode" required /> <br/>
   klassenavn <input type="text" id="klasse" name="klasse" required /> <br/>
-  stuidekode <input type="text" id="studiekose" name="studiekode" required /> <br/>
+  stuidekode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
   <input type="submit" value="Registrer klasse" id="registrerKlasseKnapp" name="registrerKlasseKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
@@ -20,9 +20,9 @@
     {
       $klassekode=$_POST ["klassekode"];
       $klasse=$_POST ["klasse"];
-      $studiekode=$_POST ["studiekode"];
+      $studiumkode=$_POST ["studiumkode"];
 
-      if (!$klassekode || !$klasse || !$studiekode)
+      if (!$klassekode || !$klasse || !$studiumkode)
         {
           print ("B&aring;de klassekode og klasse m&aring; fylles ut");
         }
@@ -30,7 +30,7 @@
         {
           include("database.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';";
+          $sqlSetning="SELECT * FROM Klassekode WHERE Klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
