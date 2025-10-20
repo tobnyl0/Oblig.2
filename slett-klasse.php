@@ -25,7 +25,7 @@
         }
       else
         {
-          include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+          include("database.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
           $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';";
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
