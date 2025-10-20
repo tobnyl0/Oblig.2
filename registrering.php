@@ -11,12 +11,12 @@
   klassekode <input type="text" id="klassekode" name="klassekode" required /> <br/>
   klassenavn <input type="text" id="klasse" name="klasse" required /> <br/>
   stuidekode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
-  <input type="submit" value="Registrer klasse" id="registrerKlasseKnapp" name="registrerKlasseKnapp" /> 
+  <input type="submit" value="Registrer Klassekode" id="registrerKlassekodeKnapp" name="registrerKlassekodeKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
 
 <?php 
-  if (isset($_POST ["registrerKlasseKnapp"]))
+  if (isset($_POST ["registrerKlassekodeKnapp"]))
     {
       $klassekode=$_POST ["klassekode"];
       $klasse=$_POST ["klasse"];
