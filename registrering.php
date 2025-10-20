@@ -10,7 +10,7 @@
 <form method="post" action="" id="registrerklasseSkjema" name="registrerklasseSkjema">
   klassekode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
   klassenavn <input type="text" id="klassenavn" name="klassenavn" required /> <br/>
-  stuidekode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
+  studiumkode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
   <input type="submit" value="Registrer Klassekode" id="registrerKlassekodeKnapp" name="registrerKlassekodeKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
@@ -40,7 +40,7 @@
             }
           else
             {
-              $sqlSetning="INSERT INTO klassenavn VALUES('$Klassekode','$klassenavn', '$studiumkode');";
+              $sqlSetning="INSERT INTO Klassekode VALUES('$Klassekode','$klassenavn', '$studiumkode');";
               mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
