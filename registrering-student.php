@@ -9,7 +9,7 @@
 
 <form method="post" action="" id="registrerstudentSkjema" name="registrerstudentSkjema">
   Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
-  Etternavn <input type="text" id="etternavn" name="etterenavn" required /> <br/>
+  Etternavn <input type="text" id="etternavn" name="etternavn" required /> <br/>
   Brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
   Klasskode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
   <input type="submit" value="Registrer Student" id="registrerStudentkodeKnapp" name="registrerStudentkodeKnapp" /> 
