@@ -46,7 +46,7 @@
               mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende etternavn er n&aring; registrert: $Klassekode $etternavn $fornavn $brukernavn"); 
+              print ("F&oslash;lgende etternavn er n&aring; registrert: $fornavn $etternavn $brukernavn $Klassekode"); 
             }
         }
     }
