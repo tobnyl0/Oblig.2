@@ -13,15 +13,15 @@
 
   print ("<h3>Registrerte klasser</h3>");
   print ("<table border=1>");  
-  print ("<tr><th align=left>klassekode</th> <th align=left>klasse</th></tr>"); 
+  print ("<tr><th align=left>klassekode</th> <th align=left>klassenavn</th></tr>"); 
 
   for ($r=1;$r<=$antallRader;$r++)
     {
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra sp�rringsresultatet */
       $klassekode=$rad["klassekode"];        /* ELLER $klassekode=$rad[0]; */
-      $klasse=$rad["klasse"];    /* ELLER $klasse=$rad[1]; */
+      $klassenavn=$rad["klassenavn"];    /* ELLER $klassenavn=$rad[1]; */
 
-      print ("<tr> <td> $klassekode </td> <td> $klasse </td> </tr>");
+      print ("<tr> <td> $klassekode </td> <td> $klassenavn </td> </tr>");
     }
   print ("</table>"); 
 ?>
