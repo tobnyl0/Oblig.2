@@ -22,9 +22,9 @@
       $fornavn=$_POST ["fornavn"];
       $etternavn=$_POST ["etternavn"];
       $brukernavn=$_POST ["brukernavn"];
-      $klassekode=$_POST ["klassekode"];
+      $Klassekode=$_POST ["klassekode"];
 
-      if (!$klassekode || !$etternavn || !$brukernavn || $fornavn)
+      if (!$Klassekode || !$etternavn || !$brukernavn || $fornavn)
         {
           print ("B&aring;de Klassekode etternavn og brukernavn m&aring; fylles ut");
         }
@@ -42,11 +42,11 @@
             }
           else
             {
-              $sqlSetning="INSERT INTO student VALUES('$Klassekode','$etternavn', '$brukernavn');";
+              $sqlSetning="INSERT INTO student VALUES('$Klassekode','$etternavn', '$brukernavn', '$fornavn');";
               mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende etternavn er n&aring; registrert: $Klassekode $etternavn $brukernavn"); 
+              print ("F&oslash;lgende etternavn er n&aring; registrert: $Klassekode $etternavn $fornavn $brukernavn"); 
             }
         }
     }
