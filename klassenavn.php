@@ -20,7 +20,7 @@
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra sp�rringsresultatet */
       $klassekode=$rad["klassekode"];        /* ELLER $klassekode=$rad[0]; */
       $klassenavn=$rad["klassenavn"];     /* ELLER $klassenavn=$rad[1]; */
-      $studiumkode=$rad[studiumkode];    /*  ELLER $studiumkode=$rad [2]; */
+      $studiumkode=$rad["studiumkode"];   /*  ELLER $studiumkode=$rad [2]; */
 
       print ("<tr> <td> $klassekode </td> <td> $klassenavn </td> <td> $studiumkode </td> </tr>");
     }
