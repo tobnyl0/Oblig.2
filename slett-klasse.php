@@ -27,7 +27,7 @@
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM klassenavn WHERE Klassekode='$Klassekode';";
+          $sqlSetning="SELECT * FROM Klassekode WHERE Klassekode='$Klassekode';";
           $sqlResultat=mysqli_query ($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
@@ -37,7 +37,7 @@
             }
           else
             {	  
-              $sqlSetning="DELETE FROM klassenavn WHERE Klassekode='$Klassekodelassekode';";
+              $sqlSetning="DELETE FROM Klassekode WHERE Klassekode='$Klassekodelassekode';";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
                 /* SQL-setning sendt til database-serveren */
 		
