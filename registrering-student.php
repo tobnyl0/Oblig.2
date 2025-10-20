@@ -1,13 +1,13 @@
-<?php  /* registrer-klasse */
+<?php  /* registrer-student */
 /*
-/*  Programmet lager et html-skjema for å registrere en klasse
-/*  Programmet registrerer data (klassekode og klasse) i databasen
+/*  Programmet lager et html-skjema for å registrere en student
+/*  Programmet registrerer data (studentkode og student) i databasen
 */
 ?> 
 
-<h3>Registrer klasse </h3>
+<h3>Registrer student </h3>
 
-<form method="post" action="" id="registrerklasseSkjema" name="registrerklasseSkjema">
+<form method="post" action="" id="registrerstudentSkjema" name="registrerstudentSkjema">
   Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
   Etternavn <input type="text" id="etternavn" name="etterenavn" required /> <br/>
   Brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
@@ -22,11 +22,11 @@
       $fornavn=$_POST ["fornavn"];
       $etternavn=$_POST ["etternavn"];
       $brukernavn=$_POST ["brukernavn"];
-      $Klassekode=$_POST ["klassekode"];
+      $Klassekode=$_POST ["Klassekode"];
 
       if (!$Klassekode || !$etternavn || !$brukernavn || $fornavn)
         {
-          print ("B&aring;de Klassekode etternavn og brukernavn m&aring; fylles ut");
+          print ("B&aring;de fornavn etternavn brukernavn og Klassekode m&aring; fylles ut");
         }
       else
         {
@@ -38,7 +38,7 @@
 
           if ($antallRader!=0)  /* klasse er registrert fra før */
             {
-              print ("Klassen er registrert fra f&oslashr");
+              print ("Navnet er registrert fra f&oslashr");
             }
           else
             {
