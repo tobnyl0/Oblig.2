@@ -1,0 +1,52 @@
+<?php  /* registrer-klasse */
+/*
+/*  Programmet lager et html-skjema for å registrere en klasse
+/*  Programmet registrerer data (klassekode og klasse) i databasen
+*/
+?> 
+
+<h3>Registrer klasse </h3>
+
+<form method="post" action="" id="registrerklasseSkjema" name="registrerklasseSkjema">
+  Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
+  Etternavn <input type="text" id="etternavn" name="etterenavn" required /> <br/>
+  Brukernavn <input type="text" id="etternavn" name="etternavn" required /> <br/>
+  Klasskode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
+  <input type="submit" value="Registrer Student" id="registrerStudentkodeKnapp" name="registrerStudentkodeKnapp" /> 
+  <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
+</form>
+
+<?php 
+  if (isset($_POST ["registrerStudentkodeKnapp"]))
+    {
+      $Klassekode=$_POST ["Klassekode"];
+      $etternavn=$_POST ["etternavn"];
+      $brukernavn=$_POST ["brukernavn"];
+
+      if (!$Klassekode || !$etternavn || !$brukernavn)
+        {
+          print ("B&aring;de Klassekode etternavn og brukernavn m&aring; fylles ut");
+        }
+      else
+        {
+          include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+
+          $sqlSetning="SELECT * FROM student WHERE etternavn='$etternavn';";
+          $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+          $antallRader=mysqli_num_rows($sqlResultat); 
+
+          if ($antallRader!=0)  /* klasse er registrert fra før */
+            {
+              print ("Klassen er registrert fra f&oslashr");
+            }
+          else
+            {
+              $sqlSetning="INSERT INTO student VALUES('$Klassekode','$etternavn', '$brukernavn');";
+              mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
+                /* SQL-setning sendt til database-serveren */
+
+              print ("F&oslash;lgende etternavn er n&aring; registrert: $Klassekode $etternavn $brukernavn"); 
+            }
+        }
+    }
+?> 
