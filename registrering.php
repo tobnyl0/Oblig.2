@@ -24,7 +24,7 @@
 
       if (!$Klassekode || !$klassenavn || !$studiumkode)
         {
-          print ("B&aring;de Klassekode og klassenavn m&aring; fylles ut");
+          print ("B&aring;de Klassekode klassenavn og studiumkode m&aring; fylles ut");
         }
       else
         {
