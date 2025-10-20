@@ -9,7 +9,7 @@
 
 <form method="post" action="" id="registrerklasseSkjema" name="registrerklasseSkjema">
   klassekode <input type="text" id="klassekode" name="klassekode" required /> <br/>
-  klassenavn <input type="text" id="klasse" name="klasse" required /> <br/>
+  klassenavn <input type="text" id="klassenavn" name="klassenavn" required /> <br/>
   stuidekode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
   <input type="submit" value="Registrer Klassekode" id="registrerKlassekodeKnapp" name="registrerKlassekodeKnapp" /> 
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
@@ -19,10 +19,10 @@
   if (isset($_POST ["registrerKlassekodeKnapp"]))
     {
       $Klassekode=$_POST ["Klassekode"];
-      $klasse=$_POST ["klasse"];
+      $klassenavn=$_POST ["klassenavn"];
       $studiumkode=$_POST ["studiumkode"];
 
-      if (!$Klassekode || !$klasse || !$studiumkode)
+      if (!$Klassekode || !$klassenavn || !$studiumkode)
         {
           print ("B&aring;de Klassekode og klasse m&aring; fylles ut");
         }
