@@ -18,13 +18,13 @@
 <?php 
   if (isset($_POST ["registrerKlassekodeKnapp"]))
     {
-      $klassekode=$_POST ["klassekode"];
+      $klassekode=$_POST ["Klassekode"];
       $klasse=$_POST ["klasse"];
       $studiumkode=$_POST ["studiumkode"];
 
       if (!$klassekode || !$klasse || !$studiumkode)
         {
-          print ("B&aring;de klassekode og klasse m&aring; fylles ut");
+          print ("B&aring;de Klassekode og klasse m&aring; fylles ut");
         }
       else
         {
@@ -44,7 +44,7 @@
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
                 /* SQL-setning sendt til database-serveren */
 
-              print ("F&oslash;lgende klasse er n&aring; registrert: $klassekode $klasse"); 
+              print ("F&oslash;lgende klasse er n&aring; registrert: $Klassekode $klasse"); 
             }
         }
     }
