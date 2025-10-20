@@ -1,4 +1,4 @@
-<?php  /* slett-poststed */
+<?php  /* slett-klasse */
 /*
 /*  Programmet lager et skjema for å velge en klasse som skal slettes  
 /*  Programmet sletter den valgte klassen
@@ -27,7 +27,7 @@
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM Klassekode WHERE klassenavn='$Klassekode';";
+          $sqlSetning="SELECT * FROM Klassekode WHERE klassenavn='$klassekode';";
           $sqlResultat=mysqli_query ($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
