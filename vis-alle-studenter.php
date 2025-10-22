@@ -21,7 +21,7 @@
       $klassekode=$rad["klassekode"];        /* ELLER $klassekode=$rad[0]; */
       $fornavn=$rad["fornavn"];     /* ELLER $fornavn=$rad[1]; */
       $etternavn=$rad["etternavn"];   /*  ELLER $etternavn=$rad [2]; */
-      $brukernavn=$rad["brukernavn"];  
+      $brukernavn=$rad["brukernavn"]; /* ELLER $brukernavn=$rad[3]; */
 
       print ("<tr> <td> $klassekode </td> <td> $fornavn </td> <td> $etternavn </td> <td> $brukernavn </td> </tr>");
     }
