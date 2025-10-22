@@ -1,6 +1,6 @@
 <?php  /* slett-student */
 /*
-/*  Programmet lager et skjema for å velge en student som skal slettes  
+/*  Programmet lager et skjema for å velge en registrert student som skal slettes  
 /*  Programmet sletter den valgte studenten
 */
 ?>
@@ -10,7 +10,7 @@
 <h3>Slett student</h3>
 
 <form method="post" action="" id="slettstudentSkjema" name="slettstudentSkjema" onSubmit="return bekreft()">
-  <label for="brukernavn">Velg student:</label>
+  <label for="brukernavn">Velg registrert student:</label>
   <select name="brukernavn" id="brukernavn" required>
     <?php
       include("db-tilkobling.php");
@@ -33,7 +33,7 @@
     $brukernavn = $_POST["brukernavn"];
 
     if (!$brukernavn) {
-      print("Brukernavn må fylles ut");
+      print("Du må velge en student.");
     } else {
       include("db-tilkobling.php");
 
@@ -42,7 +42,7 @@
       $antallRader = mysqli_num_rows($sqlResultat); 
 
       if ($antallRader == 0) {
-        print("Studenten finnes ikke");
+        print("Studenten finnes ikke.");
       } else {
         $sqlSetning = "DELETE FROM student WHERE brukernavn='$brukernavn';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
