@@ -4,7 +4,7 @@
 */
   include("db-tilkobling.php");  /* tilkobling til database-serveren utf�rt og valg av database foretatt */
 
-  $sqlSetning="SELECT * FROM Klassekode;";
+  $sqlSetning="SELECT * FROM student;";
   
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
     /* SQL-setning sendt til database-serveren */
@@ -13,13 +13,13 @@
 
   print ("<h3>Registrerte studenter</h3>");
   print ("<table border=1>");  
-  print ("<tr><th align=left>klassekode</th> <th align=left>fornavn$fornavn</th> <th align=left>etternavn</th></tr>"); 
+  print ("<tr><th align=left>klassekode</th> <th align=left>fornavn$</th> <th align=left>etternavn</th></tr>"); 
 
   for ($r=1;$r<=$antallRader;$r++)
     {
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra sp�rringsresultatet */
       $klassekode=$rad["klassekode"];        /* ELLER $klassekode=$rad[0]; */
-      $fornavn=$rad["fornavn$fornavn"];     /* ELLER $fornavn=$rad[1]; */
+      $fornavn=$rad["fornavn"];     /* ELLER $fornavn=$rad[1]; */
       $etternavn=$rad["etternavn"];   /*  ELLER $etternavn=$rad [2]; */
       $brukernavn=$rad["brukernavn"]  
 
