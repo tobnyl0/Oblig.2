@@ -10,16 +10,16 @@
 <h3>Slett klasse</h3>
 
 <form method="post" action="" id="slettklasseSkjema" name="slettklasseSkjema" onSubmit="return bekreft()">
-  klassenavn <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
+  Klassekode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
   <input type="submit" value="Slett klasse" name="slettklasseKnapp" id="slettklasseKnapp" /> 
 </form>
 
 <?php
   if (isset($_POST ["slettklasseKnapp"]))
     {	
-      $klassenavn=$_POST ["Klassekode"];
+      $Klassekode=$_POST ["Klassekode"];
 	  
-	  if (!$klassenavn)
+	  if (!$Klassekode)
         {
           print ("Klassekode m&aring; fylles ut");
         }
@@ -27,7 +27,7 @@
         {
           include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
 
-          $sqlSetning="SELECT * FROM Klassekode WHERE klassenavn='$klassenavn';";
+          $sqlSetning="SELECT * FROM Klassekode WHERE Klassekode='$Klassekode';";
           $sqlResultat=mysqli_query ($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
@@ -38,7 +38,7 @@
           else
             
            // Sjekk om det finnes studenter i denne klassen
-    $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE klassenavn='$klassenavn';";
+    $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE Klassekode='$Klassekode';";
     $resultat = mysqli_query($db, $sqlSetning);
     $row = mysqli_fetch_assoc($resultat);
 
@@ -48,9 +48,9 @@
 } else
 {
         // Slett klassen hvis ingen studenter er registrert
-        $sqlSetning = "DELETE FROM Klassekode WHERE klassenavn='$klassenavn';";
+        $sqlSetning = "DELETE FROM Klassekode WHERE Klassekode='$Klassekode';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette klassen");
-        print("Klassen $klassenavn er slettet.");
+        print("Klassen $Klassekode er slettet.");
    
 }
  }
