@@ -36,7 +36,7 @@
           $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-          if ($antallRader!=0)  /* klasse er registrert fra før */
+          if ($antallRader!=0)  /* student er registrert fra før */
             {
               print ("Navnet er registrert fra f&oslashr");
             }
