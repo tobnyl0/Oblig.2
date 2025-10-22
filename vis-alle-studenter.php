@@ -13,7 +13,7 @@
 
   print ("<h3>Registrerte studenter</h3>");
   print ("<table border=1>");  
-  print ("<tr><th align=left>klassekode</th> <th align=left>fornavn</th> <th align=left>etternavn</th> <th align=left>brukernavn</th></tr>"); 
+  print ("<tr><th align=left>klassekode</th> <th align=left>fornavn</th> <th align=left>etternavn</th> <th align=left>brukernavn</th> <th </tr>"); 
 
   for ($r=1;$r<=$antallRader;$r++)
     {
