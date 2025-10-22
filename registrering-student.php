@@ -1,39 +1,43 @@
-<?php  /* slett-student */
+<?php  /* registrer-student */
 /*
-/*  Programmet lager et skjema for å velge en registrert student som skal slettes  
-/*  Programmet sletter den valgte studenten
+/*  Programmet lager et html-skjema for å registrere en student
+/*  Programmet registrerer data (studentkode og student) i databasen
 */
 ?>
 
-<script src="funksjoner.js"> </script>
+<h3>Registrer student </h3>
 
-<h3>Slett student</h3>
-
-<form method="post" action="" id="slettstudentSkjema" name="slettstudentSkjema" onSubmit="return bekreft()">
-  <label for="brukernavn">Velg registrert student:</label>
-  <select name="brukernavn" id="brukernavn" required>
+<form method="post" action="" id="registrerstudentSkjema" name="registrerstudentSkjema">
+  Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
+  Etternavn <input type="text" id="etternavn" name="etternavn" required /> <br/>
+  Brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
+  Klassekode 
+  <select name="Klassekode" id="Klassekode" required>
     <?php
       include("db-tilkobling.php");
-      $sql = "SELECT brukernavn, fornavn, etternavn FROM student ORDER BY etternavn, fornavn;";
+      $sql = "SELECT Klassekode FROM Klassekode ORDER BY Klassekode;";
       $resultat = mysqli_query($db, $sql);
 
       while ($rad = mysqli_fetch_array($resultat)) {
-        $brukernavn = $rad["brukernavn"];
-        $navn = $rad["etternavn"] . ", " . $rad["fornavn"];
-        echo "<option value='$brukernavn'>$navn ($brukernavn)</option>";
+        $kode = $rad["Klassekode"];
+        echo "<option value='$kode'>$kode</option>";
       }
     ?>
   </select>
   <br/>
-  <input type="submit" value="Slett student" name="slettstudentKnapp" id="slettstudentKnapp" />
+  <input type="submit" value="Registrer Student" id="registrerStudentkodeKnapp" name="registrerStudentkodeKnapp" /> 
+  <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 </form>
 
-<?php
-  if (isset($_POST["slettstudentKnapp"])) {
+<?php 
+  if (isset($_POST["registrerStudentkodeKnapp"])) {
+    $fornavn = $_POST["fornavn"];
+    $etternavn = $_POST["etternavn"];
     $brukernavn = $_POST["brukernavn"];
+    $Klassekode = $_POST["Klassekode"];
 
-    if (!$brukernavn) {
-      print("Du må velge en student.");
+    if (!$Klassekode || !$etternavn || !$brukernavn || !$fornavn) {
+      print("Både fornavn, etternavn, brukernavn og klassekode må fylles ut");
     } else {
       include("db-tilkobling.php");
 
@@ -41,12 +45,13 @@
       $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
       $antallRader = mysqli_num_rows($sqlResultat); 
 
-      if ($antallRader == 0) {
-        print("Studenten finnes ikke.");
+      if ($antallRader != 0) {
+        print("Studenten er allerede registrert");
       } else {
-        $sqlSetning = "DELETE FROM student WHERE brukernavn='$brukernavn';";
-        mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
-        print("Følgende student er nå slettet: $brukernavn<br />");
+        $sqlSetning = "INSERT INTO student VALUES('$fornavn','$etternavn', '$brukernavn', '$Klassekode');";
+        mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere data i databasen");
+
+        print("Følgende student er nå registrert: $fornavn $etternavn ($brukernavn) i klasse $Klassekode");
       }
     }
   }
