@@ -23,7 +23,7 @@
       $etternavn=$rad["etternavn"];   /*  ELLER $etternavn=$rad [2]; */
       $brukernavn=$rad["brukernavn"]; /* ELLER $brukernavn=$rad[3]; */
 
-      print ("<tr> <td> $klassekode </td> <td> $fornavn </td> <td> $etternavn </td> <td> $brukernavn </td> </tr>");
+      print ("<tr> <td> $klassekode </td> <td> $fornavn </td> <td> $etternavn </td> <td> $brukernavn </td> <td> </tr>");
     }
   print ("</table>"); 
 ?>
