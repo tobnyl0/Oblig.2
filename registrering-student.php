@@ -1,53 +1,53 @@
-<?php  /* registrer-student */
+<?php  /* slett-student */
 /*
-/*  Programmet lager et html-skjema for å registrere en student
-/*  Programmet registrerer data (studentkode og student) i databasen
+/*  Programmet lager et skjema for å velge en student som skal slettes  
+/*  Programmet sletter den valgte studenten
 */
-?> 
+?>
 
-<h3>Registrer student </h3>
+<script src="funksjoner.js"> </script>
 
-<form method="post" action="" id="registrerstudentSkjema" name="registrerstudentSkjema">
-  Fornavn <input type="text" id="fornavn" name="fornavn" required /> <br/>
-  Etternavn <input type="text" id="etternavn" name="etternavn" required /> <br/>
-  Brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
-  Klasskode <input type="text" id="Klassekode" name="Klassekode" required /> <br/>
-  <input type="submit" value="Registrer Student" id="registrerStudentkodeKnapp" name="registrerStudentkodeKnapp" /> 
-  <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
+<h3>Slett student</h3>
+
+<form method="post" action="" id="slettstudentSkjema" name="slettstudentSkjema" onSubmit="return bekreft()">
+  <label for="brukernavn">Velg student:</label>
+  <select name="brukernavn" id="brukernavn" required>
+    <?php
+      include("db-tilkobling.php");
+      $sql = "SELECT brukernavn, fornavn, etternavn FROM student ORDER BY etternavn, fornavn;";
+      $resultat = mysqli_query($db, $sql);
+
+      while ($rad = mysqli_fetch_array($resultat)) {
+        $brukernavn = $rad["brukernavn"];
+        $navn = $rad["etternavn"] . ", " . $rad["fornavn"];
+        echo "<option value='$brukernavn'>$navn ($brukernavn)</option>";
+      }
+    ?>
+  </select>
+  <br/>
+  <input type="submit" value="Slett student" name="slettstudentKnapp" id="slettstudentKnapp" />
 </form>
 
-<?php 
-  if (isset($_POST ["registrerStudentkodeKnapp"]))
-    {
-      $fornavn=$_POST ["fornavn"];
-      $etternavn=$_POST ["etternavn"];
-      $brukernavn=$_POST ["brukernavn"];
-      $Klassekode=$_POST ["Klassekode"];
+<?php
+  if (isset($_POST["slettstudentKnapp"])) {
+    $brukernavn = $_POST["brukernavn"];
 
-      if (!$Klassekode || !$etternavn || !$brukernavn || !$fornavn)
-        {
-          print ("B&aring;de fornavn etternavn brukernavn og Klassekode m&aring; fylles ut");
-        }
-      else
-        {
-          include("db-tilkobling.php");  /* tilkobling til database-serveren utført og valg av database foretatt */
+    if (!$brukernavn) {
+      print("Brukernavn må fylles ut");
+    } else {
+      include("db-tilkobling.php");
 
-          $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
-          $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
-          $antallRader=mysqli_num_rows($sqlResultat); 
+      $sqlSetning = "SELECT * FROM student WHERE brukernavn='$brukernavn';";
+      $sqlResultat = mysqli_query($db, $sqlSetning) or die("Ikke mulig å hente data fra databasen");
+      $antallRader = mysqli_num_rows($sqlResultat); 
 
-          if ($antallRader!=0)  /* student er registrert fra før */
-            {
-              print ("Navnet er registrert fra f&oslashr");
-            }
-          else
-            {
-              $sqlSetning="INSERT INTO student VALUES('$fornavn','$etternavn', '$brukernavn', '$Klassekode');";
-              mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
-                /* SQL-setning sendt til database-serveren */
-
-              print ("F&oslash;lgende student er n&aring; registrert: $fornavn $etternavn $brukernavn $Klassekode"); 
-            }
-        }
+      if ($antallRader == 0) {
+        print("Studenten finnes ikke");
+      } else {
+        $sqlSetning = "DELETE FROM student WHERE brukernavn='$brukernavn';";
+        mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette data i databasen");
+        print("Følgende student er nå slettet: $brukernavn<br />");
+      }
     }
-?> 
+  }
+?>
