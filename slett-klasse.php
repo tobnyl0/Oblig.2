@@ -37,13 +37,22 @@
             }
           else
             
-            {	  
-              $sqlSetning="DELETE FROM Klassekode WHERE klassenavn='$klassenavn';";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-                /* SQL-setning sendt til database-serveren */
-		
-              print ("F&oslash;lgende klasse er n&aring; slettet: $klassenavn  <br />");
-            }
-        }
+           // Sjekk om det finnes studenter i denne klassen
+    $sqlSetning = "SELECT COUNT(*) AS antall FROM Student WHERE klassekode='$klassekode';";
+    $resultat = mysqli_query($db, $sqlSetning);
+    $row = mysqli_fetch_assoc($resultat);
+
+    if ($row['antall'] > 0)
+{
+        print("Kan ikke slette klassen fordi den har registrerte studenter.");
+} else
+{
+        // Slett klassen hvis ingen studenter er registrert
+        $sqlSetning = "DELETE FROM Klasse WHERE klassekode='$klassekode';";
+        mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette klassen");
+        print("Klassen $klassekode er slettet.");
+   
+}
+ }
     }
-?> 
+?>
