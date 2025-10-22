@@ -38,7 +38,7 @@
           else
             
            // Sjekk om det finnes studenter i denne klassen
-    $sqlSetning = "SELECT COUNT(*) AS antall FROM Student WHERE klassekode='$klassekode';";
+    $sqlSetning = "SELECT COUNT(*) AS antall FROM Student WHERE Klassekode='$Klassekode';";
     $resultat = mysqli_query($db, $sqlSetning);
     $row = mysqli_fetch_assoc($resultat);
 
@@ -48,9 +48,9 @@
 } else
 {
         // Slett klassen hvis ingen studenter er registrert
-        $sqlSetning = "DELETE FROM Klasse WHERE klassekode='$klassekode';";
+        $sqlSetning = "DELETE FROM Klasse WHERE Klassekode='$Klassekode';";
         mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette klassen");
-        print("Klassen $klassekode er slettet.");
+        print("Klassen $Klassekode er slettet.");
    
 }
  }
