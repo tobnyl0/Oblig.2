@@ -31,9 +31,9 @@
           $sqlResultat=mysqli_query ($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
           $antallRader=mysqli_num_rows($sqlResultat); 
 
-          if ($antallRader==0)  /* klasse er ikke registrert */
+          if ($antallRader==0)  /* studenten er ikke registrert */
             {
-              print ("klassen finnes ikke");
+              print ("studenten finnes ikke");
             }
           else
             {	  
