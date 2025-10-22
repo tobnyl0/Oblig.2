@@ -38,7 +38,7 @@
           else
             
            // Sjekk om det finnes studenter i denne klassen
-    $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE klassenavn='$klassenavn';";
+    $sqlSetning = "SELECT COUNT(*) AS antall FROM student WHERE Klassekode='$Klassekode';";
     $resultat = mysqli_query($db, $sqlSetning);
     $row = mysqli_fetch_assoc($resultat);
 
