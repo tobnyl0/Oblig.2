@@ -41,7 +41,7 @@
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
                 /* SQL-setning sendt til database-serveren */
 		
-              print ("F&oslash;lgende poststed er n&aring; slettet: $klassenavn  <br />");
+              print ("F&oslash;lgende klasse er n&aring; slettet: $klassenavn  <br />");
             }
         }
     }
