@@ -36,14 +36,7 @@
               print ("klassen finnes ikke");
             }
           else
-             } else{
-      $sqlSjekkStudenter = "SELECT * FROM student WHERE klassekode='$klassekode';";
-      $resultatStudenter = mysqli_query($db, $sqlSjekkStudenter);
-      $antallStudenter = mysqli_num_rows($resultatStudenter);
-
-      if ($antallStudenter > 0) {
-        print("Kan ikke slette klassen fordi det finnes studenter som er registrert i den.");
-      } else
+            
             {	  
               $sqlSetning="DELETE FROM Klassekode WHERE klassenavn='$klassenavn';";
               mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
